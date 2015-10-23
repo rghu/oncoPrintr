@@ -17,7 +17,7 @@
 #'
 #' @examples TODO
 
-oncoPrint <- function(df, sort=TRUE, convert = TRUE, total_samples = NA, geneName = NA, annotation = NA, annotation_order = NA, merge_scnas = F, df2 = NA, colors = list(Amplification = "red", Deletion = "blue"), alteration_score = list(Amplification = 5, Deletion = 4, Nonsense = 2.8, Frameshift = 2.5, Splicing = 2.5, InFrame = 2, Promoter = 2, Mutation =1, Missense=1, Present = 1, Absent = 0.5,NotTested = 0, None = 0, NotPresent = 0, del = 3, homodel = 2, LOH = 1.5, CNLOH = 1), printSamples = T, xpadding = 0.1, ypadding = 0.1) {
+oncoPrint <- function(df, sort=TRUE, convert = TRUE, total_samples = NA, geneName = NA, annotation = NA, annotation_order = NA, merge_scnas = F, df2 = NA, colors = list(Amplification = "red", Deletion = "blue"), alteration_score = list(Amplification = 5, Deletion = 4, Nonsense = 2.8, Frameshift = 2.5, Splicing = 2.5, InFrame = 2, Promoter = 2, Mutation =1, Missense=1, Present = 1, Absent = 0.5,Basal_Cell_Carcinoma=1, Skin_adnexal_carcinoma=1, Squamous_Cell_Carcinoma=1, Oropharynx=1, Sinonasal=1, Unknown=1, NotTested = 0, None = 0, NotPresent = 0, del = 3, homodel = 2, LOH = 1.5, CNLOH = 1), printSamples = T, xpadding = 0.1, ypadding = 0.1) {
   # This is the plotting function
   library(reshape2)
   library(dplyr)
@@ -51,6 +51,18 @@ oncoPrint <- function(df, sort=TRUE, convert = TRUE, total_samples = NA, geneNam
           return(x[grep("Deletion", x[i]) ])
         }else if(grepl("Present", x[i])){
           return(x[grep("Present", x[i]) ])
+        }else if(grepl("Basal_Cell_Carcinoma", x[i])){
+          return(x[grep("Basal_Cell_Carcinoma", x[i]) ])
+        }else if(grepl("Skin_adnexal_carcinoma", x[i])){
+          return(x[grep("Skin_adnexal_carcinoma", x[i]) ])
+        }else if(grepl("Squamous_Cell_Carcinoma", x[i])){
+          return(x[grep("Squamous_Cell_Carcinoma", x[i]) ])
+        }else if(grepl("Oropharynx", x[i])){
+          return(x[grep("Oropharynx", x[i]) ])
+        }else if(grepl("Sinonasal", x[i])){
+          return(x[grep("Sinonasal", x[i]) ])
+        }else if(grepl("Unknown", x[i])){
+          return(x[grep("Unknown", x[i]) ])
         }else if(grepl("Absent", x[i])){
           return(x[grep("Absent", x[i]) ])
         }else if(grepl("NotTested", x[i])){
@@ -253,7 +265,7 @@ oncoPrint <- function(df, sort=TRUE, convert = TRUE, total_samples = NA, geneNam
               ytop2 <- ytop-0.25
               ybottom2 <- ybottom+0.25
               oncoCords[cnt, ] <- c(xleft, ybottom2, xright, ytop2, altered);
-            }else if( altered == "Amplification" || altered == "Deletion" || altered == "Present" || altered == "Absent" || altered == "NotPresent" || altered == "NotTested"|| altered == "homodel" || altered == "del" || altered == "CNLOH" || altered == "LOH"){
+            }else if( altered == "Amplification" || altered == "Deletion" || altered == "Present" || altered == "Absent" || altered == "Basal_Cell_Carcinoma"|| altered == "Skin_adnexal_carcinoma"|| altered == "Squamous_Cell_Carcinoma"|| altered == "Oropharynx"|| altered == "Sinonasal"|| altered == "Unknown"|| altered == "NotPresent" || altered == "NotTested"|| altered == "homodel" || altered == "del" || altered == "CNLOH" || altered == "LOH"){
               oncoCords.scna[cnt, ] <- c(xleft, ybottom, xright, ytop, altered);
             }
             # second alteration
@@ -262,7 +274,7 @@ oncoPrint <- function(df, sort=TRUE, convert = TRUE, total_samples = NA, geneNam
               ytop2 <- ytop-0.25
               ybottom2 <- ybottom+0.25
               oncoCords[cnt, ] <- c(xleft, ybottom2, xright, ytop2, altered);
-            }else if( altered == "Amplification" || altered == "Deletion" || altered == "Present" || altered == "Absent" || altered == "NotPresent" || altered == "NotTested"|| altered == "homodel" || altered == "del" || altered == "CNLOH" || altered == "LOH"){
+            }else if( altered == "Amplification" || altered == "Deletion" || altered == "Present" || altered == "Absent" || altered == "Basal_Cell_Carcinoma"|| altered == "Skin_adnexal_carcinoma"|| altered == "Squamous_Cell_Carcinoma"|| altered == "Oropharynx"|| altered == "Sinonasal"|| altered == "Unknown" || altered == "NotPresent" || altered == "NotTested"|| altered == "homodel" || altered == "del" || altered == "CNLOH" || altered == "LOH"){
               oncoCords.scna[cnt, ] <- c(xleft, ybottom, xright, ytop, altered);
             }
             
@@ -272,7 +284,7 @@ oncoPrint <- function(df, sort=TRUE, convert = TRUE, total_samples = NA, geneNam
               ytop2 <- ytop-0.25
               ybottom2 <- ybottom+0.25
               oncoCords[cnt, ] <- c(xleft, ybottom2, xright, ytop2, altered);
-            }else if( altered == "Amplification" || altered == "Deletion" || altered == "Present" || altered == "Absent"|| altered == "NotPresent" || altered == "NotTested" || altered == "homodel" || altered == "del" || altered == "CNLOH" || altered == "LOH"){
+            }else if( altered == "Amplification" || altered == "Deletion" || altered == "Present" || altered == "Absent"|| altered == "Basal_Cell_Carcinoma"|| altered == "Skin_adnexal_carcinoma"|| altered == "Squamous_Cell_Carcinoma"|| altered == "Oropharynx"|| altered == "Sinonasal"|| altered == "Unknown"|| altered == "NotPresent" || altered == "NotTested" || altered == "homodel" || altered == "del" || altered == "CNLOH" || altered == "LOH"){
               oncoCords.scna[cnt, ] <- c(xleft, ybottom, xright, ytop, altered);
             }
           }
@@ -299,7 +311,7 @@ oncoPrint <- function(df, sort=TRUE, convert = TRUE, total_samples = NA, geneNam
             ytop2 <- ytop-0.25
             ybottom2 <- ybottom+0.25
             oncoCords[cnt, ] <- c(xleft, ybottom2, xright, ytop2, altered);
-          }else if( altered == "Amplification" || altered == "Deletion" || altered == "Present" || altered == "Absent" || altered == "NotPresent" ||altered == "NotTested" || altered == "homodel" || altered == "del" || altered == "CNLOH" || altered == "LOH"){
+          }else if( altered == "Amplification" || altered == "Deletion" || altered == "Present" || altered == "Absent"|| altered == "Basal_Cell_Carcinoma"|| altered == "Skin_adnexal_carcinoma"|| altered == "Squamous_Cell_Carcinoma"|| altered == "Oropharynx"|| altered == "Sinonasal"|| altered == "Unknown" || altered == "NotPresent" ||altered == "NotTested" || altered == "homodel" || altered == "del" || altered == "CNLOH" || altered == "LOH"){
             oncoCords.scna[cnt, ] <- c(xleft, ybottom, xright, ytop, altered);
           }else{
             oncoCords[cnt, ] <- c(xleft, ybottom, xright, ytop, altered);
@@ -336,10 +348,24 @@ oncoPrint <- function(df, sort=TRUE, convert = TRUE, total_samples = NA, geneNam
   colors[ which(oncoCords[, "altered"] == "Promoter") ] <- "#2986E2"
   colors[ which(oncoCords[, "altered"] == "InFrame") ] <- "#F26529"
   colors[ which(oncoCords[, "altered"] == "Present") ] <- "black"
-  colors[ which(oncoCords[, "altered"] == "Absent") ] <- "darkgoldenrod1"
+  colors[ which(oncoCords[, "altered"] == "Absent") ] <- "lightskyblue3"
+  colors[ which(oncoCords[, "altered"] == "Basal_Cell_Carcinoma") ] <- "#E69F00"
+  colors[ which(oncoCords[, "altered"] == "Skin_adnexal_carcinoma") ] <- "#56B4E9"
+  colors[ which(oncoCords[, "altered"] == "Squamous_Cell_Carcinoma") ] <- "#009E73"
+  colors[ which(oncoCords[, "altered"] == "Oropharynx") ] <- "#F0E442"
+  colors[ which(oncoCords[, "altered"] == "Sinonasal") ] <- "#0072B2"
+  colors[ which(oncoCords[, "altered"] == "Unknown") ] <- "#D55E00"
 
-  colors.scna[ which(oncoCords.scna[, "altered"] == "Present") ] <- "magenta3"
-  colors.scna[ which(oncoCords.scna[, "altered"] == "Absent") ] <- "darkgoldenrod1"
+
+  
+  colors.scna[ which(oncoCords.scna[, "altered"] == "Present") ] <- "darkred"
+  colors.scna[ which(oncoCords.scna[, "altered"] == "Absent") ] <- "lightskyblue3"
+  colors.scna[ which(oncoCords.scna[, "altered"] == "Basal_Cell_Carcinoma") ] <- "#E69F00"
+  colors.scna[ which(oncoCords.scna[, "altered"] == "Skin_adnexal_carcinoma") ] <- "#56B4E9"
+  colors.scna[ which(oncoCords.scna[, "altered"] == "Squamous_Cell_Carcinoma") ] <- "#009E73"
+  colors.scna[ which(oncoCords.scna[, "altered"] == "Oropharynx") ] <- "#F0E442"
+  colors.scna[ which(oncoCords.scna[, "altered"] == "Sinonasal") ] <- "#0072B2"
+  colors.scna[ which(oncoCords.scna[, "altered"] == "Unknown") ] <- "#D55E00"
   colors.scna[ which(oncoCords.scna[, "altered"] == "NotPresent") ] <- "#DCD9D3"
   colors.scna[ which(oncoCords.scna[, "altered"] == "NotTested") ] <- "darkgrey"
   colors.scna[ which(oncoCords.scna[, "altered"] == "del") ] <- "blue"
@@ -391,9 +417,9 @@ oncoPrint <- function(df, sort=TRUE, convert = TRUE, total_samples = NA, geneNam
     #add legend
     screen(3)
     par(mar=c(0,0,0,0))
-    legend(x="topleft", c("Missense", "Nonsense", "Truncating", "In-Frame", "Promoter"), fill = c('#26A818', 'black',  '#A05E35', '#F26529', '#2986E2'), horiz=T, border = F, cex=0.9, bty = 'n')
+    legend(x="topleft", c("Missense", "Nonsense", "Truncating", "In-Frame", "Promoter", "Amplification", "Deletion", "LOH", "Present", "Absent"), fill = c('#26A818', 'black',  '#A05E35', '#F26529', '#2986E2', '#EA2E49', '#174D9D', 'darkkhaki', 'darkred', "lightskyblue3"), horiz=T, border = F, cex=0.75, bty = 'n')
     
-    legend(x="bottomleft", c("Amplification", "Deletion", "LOH", "Present", "Absent"), fill = c( '#EA2E49', '#174D9D', 'darkkhaki', 'darkorchid2', "orange"), horiz=T, border = F, cex=0.9, bty = 'n', x.intersp = 0.5)
+    legend(x="bottomleft", c(  "Basal_Cell_Carcinoma", "Skin_adnexal_carcinoma", "Squamous_Cell_Carcinoma", "Oropharynx", "Sinonasal", "Unknown"), fill = c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00"), horiz=T, border = F, cex=0.75, bty = 'n', x.intersp = 0.5)
     close.screen(all.screens = TRUE)
     
   }else{
@@ -416,8 +442,8 @@ oncoPrint <- function(df, sort=TRUE, convert = TRUE, total_samples = NA, geneNam
     #add legend
     screen(2)
     par(mar=c(0,0,0,0))
-    legend(x="topleft", c("Missense mutation", "Nonsense mutation", "Truncating mutation"), fill = c('#26A818', 'black',  '#A05E35'), horiz=T, border = F, cex=0.9, bty = 'n')
-    legend(x="bottomleft", c( "In-Frame mutation", "Promoter mutation", "Amplification", "Deletion", "Present", "Absent"), fill = c('#F26529', '#2986E2',  '#EA2E49', '#174D9D', "darkorchid2", "darkgoldenrod1"), horiz=T, border = F, cex=0.9, bty = 'n')
+    legend(x="topleft", c("Missense mutation", "Nonsense mutation", "Truncating mutation", "In-Frame mutation", "Promoter mutation", "Amplification"), fill = c('#F26529', '#2986E2',  '#EA2E49', '#26A818', 'black',  '#A05E35'), horiz=T, border = F, cex=0.75, bty = 'n')
+    legend(x="bottomleft", c(  "Deletion", "Present", "Absent", "Basal_Cell_Carcinoma", "Skin_adnexal_carcinoma", "Squamous_Cell_Carcinoma", "Oropharynx", "Sinonasal", "Unknown"), fill = c('#174D9D', "darkred", "lightskyblue3",  "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00"), horiz=T, border = F, cex=0.75, bty = 'n')
     close.screen(all.screens = TRUE)
   }
   par(def.par) 
